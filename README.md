@@ -52,3 +52,42 @@ Please note that this setup is not suitable for production environments. It is d
 
 This revised `README.md` file provides a more detailed explanation of the repository, requirements, setup instructions, and usage information. It also includes a warning stating that this Dockerized MongoDB cluster should not be used for production purposes but rather for testing, development, or learning purposes only.
 
+To add **storage per nodes** for file and data storage in the `configure-replica-set.js` configuration file, you can modify the code as follows:
+
+```javascript
+config = {
+    "_id" : "rs0",
+    "members" : [
+        {
+            "_id" : 0,
+            "host" : "mongo-node-1:27017",
+            "storage" : { "dbPath" : "/path/to/data/storage", "journal" : { "enabled" : true }, "directoryPerDB": true }
+        },
+        { 
+            "_id" : 1,
+            "host" : "mongo-node-2:27018",
+            "storage" : { "dbPath" : "/path/to/data/storage", "journal" : { "enabled" : true }, "directoryPerDB": true }
+        },
+        { 
+            "_id" : 2,
+            "host" : "mongo-node-3:27019",
+            "storage" : { "dbPath" : "/path/to/data/storage", "journal" : { "enabled" : true }, "directoryPerDB": true }
+        },
+        { 
+            "_id" : 3,
+            "host" : "mongo-node-4:27020",
+            "storage" : { "dbPath" : "/path/to/data/storage", "journal" : { "enabled" : true }, "directoryPerDB": true }
+        },
+        { 
+            "_id" : 4,
+            "host" : "mongo-node-5:27021",
+            "storage" : { "dbPath" : "/path/to/data/storage", "journal" : { "enabled" : true }, "directoryPerDB": true }
+        }
+    ]
+};
+rs.initiate(config);
+```
+
+In this modified code, each member of the replica set has a `"storage"` field that specifies the data storage configuration. The `"dbPath"` parameter should be replaced with the actual path to the desired storage location for each node. Additionally, the `"journal"` option is enabled to provide durability and crash recovery, and the `"directoryPerDB"` option is set to `true` to create separate directories for each database within the storage path.
+
+Make sure to replace `/path/to/data/storage` with the appropriate directory path on each node where you want to store the data files.
