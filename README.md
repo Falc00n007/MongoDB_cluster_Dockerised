@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=mongodb,linux,docker " />
+  </a>
+</p>
+
+
 # MongoDB_cluster_Dockerised
 
 A Dockerized MongoDB cluster refers to a deployment of MongoDB, a popular open-source NoSQL database, using Docker containers. In this setup, the different components of the MongoDB cluster, such as primary nodes, secondary nodes, and configuration servers, are each encapsulated within separate Docker containers.
